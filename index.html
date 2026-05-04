@@ -813,6 +813,75 @@
     border-color: var(--pink);
   }
 
+  .contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 720px;
+  margin-bottom: 64px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.contact-form span {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-dim);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.contact-form input,
+.contact-form textarea {
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--ink);
+  background: rgba(39, 30, 58, 0.4);
+  border: 1px solid var(--line-bright);
+  border-radius: 4px;
+  padding: 14px 16px;
+  transition: border-color 0.25s ease, background 0.25s ease;
+  resize: vertical;
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--ink-subtle);
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--pink);
+  background: rgba(39, 30, 58, 0.6);
+}
+.contact-form button {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: linear-gradient(90deg, var(--pink), var(--lilac));
+  border: none;
+  border-radius: 4px;
+  padding: 16px 28px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  font-weight: 500;
+}
+.contact-form button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(245, 163, 192, 0.25);
+}
+@media (max-width: 700px) {
+  .form-row { grid-template-columns: 1fr; }
+}
+
   .contact-links {
     display: flex;
     gap: 48px;
@@ -1202,7 +1271,31 @@
       Let's build<br>
       something<em> worth shipping.</em>
     </h2>
-    <a class="contact-email scroll-reveal" href="mailto:hello@example.com">hello@example.com</a>
+  <form class="contact-form scroll-reveal" action="https://formspree.io/f/xnjwdnjp" method="POST">
+    <div class="form-row">
+      <label>
+        <span>Your name</span>
+        <input type="text" name="name" required />
+      </label>
+      <label>
+        <span>Your email</span>
+        <input type="email" name="email" required />
+      </label>
+    </div>
+    <label>
+      <span>What's this about?</span>
+      <input type="text" name="subject" placeholder="e.g., role at [company], collaboration, hello" required />
+    </label>
+    <label>
+      <span>Your message</span>
+      <textarea name="message" rows="5" required></textarea>
+    </label>
+    <button type="submit">Send message →</button>
+
+    <!-- Honeypot -->
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+  </form>
 
     <div class="contact-links scroll-reveal">
       <a href="https://www.linkedin.com/in/jennie-mikell-graves/">LinkedIn</a>
